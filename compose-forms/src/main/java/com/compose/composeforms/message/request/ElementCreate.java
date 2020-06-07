@@ -1,13 +1,13 @@
-package com.compose.composeforms.entity;
+package com.compose.composeforms.message.request;
 
 import java.util.Arrays;
 
-public class Element {
+public class ElementCreate {
 	private String type;
 	private String title;
 	private String[] options;
 	
-	public Element() {
+	public ElementCreate() {
 		
 	}
 

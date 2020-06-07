@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "form")
 public class Form {
@@ -88,8 +86,10 @@ public class Form {
 
 	@Override
 	public String toString() {
-		return "FormEntity [id=" + id + ", title=" + title + ", description=" + description + ", deployed=" + deployed
-				+ "]";
+		return "Form [id=" + id + ", title=" + title + ", description=" + description + ", deployed=" + deployed
+				+ ", components=" + components + "]";
 	}
+
+	
 
 }

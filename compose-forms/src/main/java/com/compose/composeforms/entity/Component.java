@@ -33,7 +33,6 @@ public class Component {
 	@JoinColumn(name = "form_id")
 	private Form form;
 
-	@JsonBackReference(value = "component-componentContent")
 	@OneToMany(mappedBy = "component", cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	private List<ComponentContent> componentContent;
 

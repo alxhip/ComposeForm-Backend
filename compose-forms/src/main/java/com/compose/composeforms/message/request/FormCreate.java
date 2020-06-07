@@ -1,9 +1,9 @@
-package com.compose.composeforms.entity;
+package com.compose.composeforms.message.request;
 
 import java.util.Arrays;
 
 public class FormCreate {
-	private Element[] elements;
+	private ElementCreate[] elements;
 	private String title;
 	private String description;
 
@@ -11,11 +11,11 @@ public class FormCreate {
 		super();
 	}
 
-	public Element[] getElements() {
+	public ElementCreate[] getElements() {
 		return elements;
 	}
 
-	public void setElements(Element[] elements) {
+	public void setElements(ElementCreate[] elements) {
 		this.elements = elements;
 	}
 

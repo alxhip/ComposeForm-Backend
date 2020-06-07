@@ -10,37 +10,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
-@Table(name = "component_content")
-public class ComponentContent {
-
+@Table(name = "componentComplete")
+public class ComponentComplete {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-	
-	@JsonBackReference(value = "component-componentContent")
+
+	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
+	@JoinColumn(name = "formComplete_id")
+	private FormComplete formComplete;
+
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "component_id")
 	private Component component;
 
-	@Column(name = "option")
-	private String option;
+	@Column(name = "value")
+	private String value;
 
-	@Column(name = "selected")
-	private boolean selected;
-
-	public ComponentContent() {
+	public ComponentComplete() {
 		super();
 	}
 
-	public ComponentContent(Component component, String option, boolean selected) {
+	public ComponentComplete(FormComplete formComplete, Component component, String value) {
 		super();
+		this.formComplete = formComplete;
 		this.component = component;
-		this.option = option;
-		this.selected = selected;
+		this.value = value;
 	}
 
 	public Long getId() {
@@ -51,6 +48,14 @@ public class ComponentContent {
 		this.id = id;
 	}
 
+	public FormComplete getFormComplete() {
+		return formComplete;
+	}
+
+	public void setFormComplete(FormComplete formComplete) {
+		this.formComplete = formComplete;
+	}
+
 	public Component getComponent() {
 		return component;
 	}
@@ -59,20 +64,19 @@ public class ComponentContent {
 		this.component = component;
 	}
 
-	public String getOption() {
-		return option;
+	public String getValue() {
+		return value;
 	}
 
-	public void setOption(String option) {
-		this.option = option;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
-	public boolean isSelected() {
-		return selected;
+	@Override
+	public String toString() {
+		return "ComponentComplete [id=" + id + ", formComplete=" + formComplete + ", component=" + component
+				+ ", value=" + value + "]";
 	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-
+	
+	
 }
