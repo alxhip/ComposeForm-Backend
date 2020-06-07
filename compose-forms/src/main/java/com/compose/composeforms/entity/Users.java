@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" })})
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }) })
 public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,13 +27,10 @@ public class Users {
 	@Size(min = 3, max = 50)
 	private String username;
 
-
 	@NotBlank
 	@Size(min = 6, max = 100)
 	private String password;
 
-
-//    @JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "users_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
 	private Set<Role> roles = new HashSet<>();
@@ -43,7 +40,7 @@ public class Users {
 	public Users() {
 	}
 
-	public Users( String username, String password) {
+	public Users(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
@@ -63,7 +60,6 @@ public class Users {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 
 	public String getPassword() {
 		return password;

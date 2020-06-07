@@ -8,10 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.compose.composeforms.entity.Role;
 import com.compose.composeforms.entity.RoleName;
 
-
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
-//	Optional<Role> findByName(RoleName roleName);
 
 	Optional<Role> findByCode(RoleName roleName);
 }

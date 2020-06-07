@@ -31,10 +31,10 @@ public class FormCompleteController {
 	@PostMapping("/forms/submit")
 	public ResponseEntity<String> submitData(@RequestBody FormSubmit formSubmit) {
 		if (formCompleteService.alreadySubmited(formSubmit.getUser_id(), formSubmit.getForm_id())) {
-			return new ResponseEntity<String>("You have already submited this form", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("You have already submitted this form", HttpStatus.BAD_REQUEST);
 		}
 		formCompleteService.saveFormComplete(formSubmit);
-		return ResponseEntity.ok().body("Data submited successfully!");
+		return ResponseEntity.ok().body("Data submitted successfully!");
 	}
 
 	@CrossOrigin("http://localhost:3000")

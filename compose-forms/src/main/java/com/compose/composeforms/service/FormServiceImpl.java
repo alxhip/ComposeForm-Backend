@@ -3,8 +3,6 @@ package com.compose.composeforms.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +15,6 @@ import com.compose.composeforms.repository.ComponentContentRepository;
 import com.compose.composeforms.repository.ComponentRepository;
 import com.compose.composeforms.repository.ComponentTypeRepository;
 import com.compose.composeforms.repository.FormRepository;
-import com.compose.composeforms.repository.UserRepository;
 
 @Service
 public class FormServiceImpl implements FormService {

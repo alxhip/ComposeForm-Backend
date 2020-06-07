@@ -2,7 +2,6 @@ package com.compose.composeforms.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +28,7 @@ public class Form {
 	@Column(name = "deployed")
 	private boolean deployed;
 
-//	@JsonBackReference(value = "form-component")
-	@OneToMany(mappedBy = "form", cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@OneToMany(mappedBy = "form")
 	private List<Component> components;
 
 	public Form() {

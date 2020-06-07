@@ -40,7 +40,6 @@ public class FormController {
 	@GetMapping("/forms/{form_id}")
 	public Form findById(@PathVariable("form_id") Long form_id) {
 		Form theForm = formService.findById(form_id);
-		System.out.println(theForm);
 		if (theForm == null) {
 			throw new RuntimeException("job id not found - " + form_id);
 		}

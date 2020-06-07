@@ -33,7 +33,7 @@ public class Component {
 	@JoinColumn(name = "form_id")
 	private Form form;
 
-	@OneToMany(mappedBy = "component", cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@OneToMany(mappedBy = "component")
 	private List<ComponentContent> componentContent;
 
 	@Column(name = "title")

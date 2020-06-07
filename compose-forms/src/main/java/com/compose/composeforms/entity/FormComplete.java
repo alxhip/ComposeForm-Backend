@@ -21,22 +21,17 @@ public class FormComplete {
 	@Column(name = "id")
 	private Long id;
 
-//	@JsonBackReference(value = "component-form")
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "form_id")
 	private Form form;
 
-//	@JsonBackReference(value = "componentType-component")
-	@OneToMany(mappedBy = "formComplete", cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@OneToMany(mappedBy = "formComplete")
 	private List<ComponentComplete> componentComplete;
 
-//	@JsonBackReference(value = "user-form")
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name = "user_id")
 	private Users user;
 
-//	@Column(name="value")
-//	private String value;
 	public FormComplete() {
 		super();
 	}

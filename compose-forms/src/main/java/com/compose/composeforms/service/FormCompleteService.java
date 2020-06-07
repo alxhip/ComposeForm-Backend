@@ -1,12 +1,11 @@
 package com.compose.composeforms.service;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.compose.composeforms.entity.Component;
 import com.compose.composeforms.entity.ComponentComplete;
@@ -49,7 +48,6 @@ public class FormCompleteService {
 		Users user = userRespository.findById(formSubmit.getUser_id()).get();
 		Form form = formRepository.findById(formSubmit.getForm_id()).get();
 		FormComplete formComplete = formCompleteRepository.save(new FormComplete(form, user));
-		ComponentComplete componentCompete;
 		Component component;
 		for (ElementComplete element : formSubmit.getElements()) {
 			component = componentRepository.findById(element.getComponent_id()).get();
@@ -65,18 +63,12 @@ public class FormCompleteService {
 		String title;
 		String description;
 		String username;
-//		List<SubmittedElement> submittedElements = new ArrayList<SubmittedElement>();
 		for (FormComplete form : formComplete) {
 			id = form.getId();
 			title = form.getForm().getTitle();
 			description = form.getForm().getDescription();
 			username = form.getUser().getUsername();
-//			for(ComponentComplete component: form.getComponentComplete()) {
-//			submittedElements.add( new SubmittedElement(component.getComponent().getTitle() ,component.getValue()));
-//			
-//			}
 			submittedForms.add(new SubmittedForm(id, title, description, username, null));
-
 		}
 		return submittedForms;
 	}
@@ -89,23 +81,11 @@ public class FormCompleteService {
 	}
 
 	public List<SubmittedElement> findById(Long form_id) {
-//		List<SubmittedForm> submittedForms = new ArrayList<SubmittedForm>();
 		FormComplete formComplete = formCompleteRepository.findById(form_id).get();
-//		Long id;
-//		String title;
-//		String description;
-//		String username;
 		List<SubmittedElement> submittedElements = new ArrayList<SubmittedElement>();
-//		for (FormComplete form : formComplete) {
-//			id = form.getId();
-//			title = form.getForm().getTitle();
-//			description = form.getForm().getDescription();
-//			username = form.getUser().getUsername();
 		for (ComponentComplete component : formComplete.getComponentComplete()) {
 			submittedElements.add(new SubmittedElement(component.getComponent().getTitle(), component.getValue()));
-
 		}
-//			return new SubmittedForm(formComplete.getId(), formComplete.getForm().getTitle(), formComplete.getForm().getDescription(), formComplete.getUser().getUsername(),  submittedElements.toArray(new SubmittedElement[0]));
 		return submittedElements;
 	}
 }
